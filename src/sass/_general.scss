@@ -1,0 +1,36 @@
+@use "variables" as *;
+@use "sass:meta";
+
+:root {
+  --almost-black: #{$almostBlack};
+  --white: #{$white};
+  --almost-white: #{$almostWhite};
+  --dark-blue: #{$darkBlue};
+  --very-dark-blu: #{$veryDarkBlue};
+}
+
+body {
+  background-color: var(--almost-white);
+  font-family: #{meta.inspect($primaryFontFamily)};
+}
+
+* {
+  transition: ease-in-out 0.4s;
+}
+
+h1 {
+  font-size: 0.875rem;
+  font-weight: 900;
+  line-height: 1.25rem;
+
+  color: var(--almost-black);
+
+  [dark-theme="true"] & {
+    color: var(--white);
+  }
+
+  @media screen and (min-width: 64rem) {
+    font-size: 1.5rem;
+    line-height: 2.0625rem;
+  }
+}
