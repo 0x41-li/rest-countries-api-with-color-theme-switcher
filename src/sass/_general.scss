@@ -1,21 +1,37 @@
 @use "variables" as *;
 @use "sass:meta";
 
+*,
+html,
+body,
+*::after,
+*::before,
+*::placeholder {
+  box-sizing: border-box;
+  transition-property: all;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.4s;
+}
+
 :root {
-  --almost-black: #{$almostBlack};
-  --white: #{$white};
-  --almost-white: #{$almostWhite};
-  --dark-blue: #{$darkBlue};
-  --very-dark-blu: #{$veryDarkBlue};
+  --primary-text-color: #{$almostBlack};
+  --body-background: #{$almostWhite};
+  --header-background: #{$white};
+}
+
+[data-dark-theme="true"] {
+  --primary-text-color: #{$white};
+  --body-background: #{$veryDarkBlue};
+  --header-background: #{$darkBlue};
 }
 
 body {
-  background-color: var(--almost-white);
+  background-color: var(--body-background);
   font-family: #{meta.inspect($primaryFontFamily)};
 }
 
-* {
-  transition: ease-in-out 0.4s;
+main {
+  background-color: var(--body-background);
 }
 
 h1 {
@@ -23,11 +39,7 @@ h1 {
   font-weight: 900;
   line-height: 1.25rem;
 
-  color: var(--almost-black);
-
-  [dark-theme="true"] & {
-    color: var(--white);
-  }
+  color: var(--primary-text-color);
 
   @media screen and (min-width: 64rem) {
     font-size: 1.5rem;

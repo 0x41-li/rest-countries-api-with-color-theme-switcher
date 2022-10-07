@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import WebFont from "webfontloader";
 
 // sass
@@ -10,6 +10,7 @@ import { ThemeContextProvider } from "./contexts/ThemeContext";
 
 // sections
 import Header from "./sections/Header";
+import Body from "./sections/Body";
 
 const App = () => {
   useEffect(() => {
@@ -24,7 +25,7 @@ const App = () => {
     <ThemeContextProvider>
       <CountriesContextProvider>
         <Header />
-        <main></main>
+        <Body />
       </CountriesContextProvider>
     </ThemeContextProvider>
   );

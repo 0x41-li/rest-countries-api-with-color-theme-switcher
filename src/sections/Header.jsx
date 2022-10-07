@@ -7,9 +7,8 @@ import { ReactComponent as MoonIcon } from "../assets/icons/moon-icon.svg";
 const Header = () => {
   const { isDarkTheme, toggleTheme } = useContext(ThemeContext);
 
-
   return (
-    <header dark-theme={isDarkTheme.toString()}>
+    <header data-dark-theme={isDarkTheme.toString()}>
       <div className="header__inner">
         <h1>Where in the world?</h1>
         <button className="header__toggle-theme-btn" onClick={toggleTheme}>
