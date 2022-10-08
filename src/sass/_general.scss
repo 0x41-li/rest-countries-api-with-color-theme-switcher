@@ -8,9 +8,11 @@ body,
 *::before,
 *::placeholder {
   box-sizing: border-box;
-  transition-property: all;
+  transition-property: background-color, color, fill, stroke, opacity, transform;
   transition-timing-function: ease-in-out;
   transition-duration: 0.4s;
+  padding: 0;
+  margin: 0;
 }
 
 :root {
@@ -26,12 +28,13 @@ body,
 }
 
 body {
-  background-color: var(--body-background);
   font-family: #{meta.inspect($primaryFontFamily)};
 }
 
 main {
   background-color: var(--body-background);
+  padding-bottom: 65px;
+  min-height: 100vh;
 }
 
 h1 {
@@ -45,4 +48,17 @@ h1 {
     font-size: 1.5rem;
     line-height: 2.0625rem;
   }
+}
+
+ul {
+  list-style: none;
+}
+
+// Utilities
+.container {
+  flex: 1;
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
 }

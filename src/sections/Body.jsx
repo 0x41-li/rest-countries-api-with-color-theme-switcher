@@ -5,13 +5,18 @@ import ThemeContext from "../contexts/ThemeContext";
 
 // sections
 import FilterAndSearch from "./FilterAndSearch";
+import CountriesList from "./CountriesList";
 
 const Body = () => {
   const { isDarkTheme } = useContext(ThemeContext);
 
   return (
-    <main data-dark-theme={isDarkTheme} style={{height:"2000px"}}>
+    <main data-dark-theme={isDarkTheme}>
+      <div className="container">
       <FilterAndSearch />
+      <CountriesList />
+      </div>
+
     </main>
   );
 };
