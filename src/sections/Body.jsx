@@ -13,10 +13,9 @@ const Body = () => {
   return (
     <main data-dark-theme={isDarkTheme}>
       <div className="container">
-      <FilterAndSearch />
-      <CountriesList />
+        <FilterAndSearch />
+        <CountriesList />
       </div>
-
     </main>
   );
 };

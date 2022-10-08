@@ -9,7 +9,7 @@ const CountriesList = () => {
   const countriesJsonInfo = useContext(CountriesContext);
 
   if (Object.keys(countriesJsonInfo).length === 0) {
-    return <Loader />
+    return <Loader />;
   }
 
   const countriesBoxesList = Object.entries(countriesJsonInfo).map(
