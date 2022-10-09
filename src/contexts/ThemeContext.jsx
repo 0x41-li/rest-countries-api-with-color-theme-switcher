@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 
-export const ThemeContext = createContext("");
+export const ThemeContext = createContext({});
 
 export const ThemeContextProvider = (props) => {
   let savedDarkThemeValue = toBool(localStorage.getItem("is_dark_theme"));

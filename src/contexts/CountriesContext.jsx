@@ -5,11 +5,13 @@ export const CountriesContext = createContext({});
 export const CountriesContextProvider = (props) => {
   const savedCountriesAsString =
     localStorage.getItem("countries_data") ?? undefined;
+
   const savedCountriesAsJson = savedCountriesAsString
     ? JSON.parse(savedCountriesAsString)
     : {};
 
   const [countriesData, setCountries] = useState(savedCountriesAsJson);
+  const [countriesDataFiltered, setCountriesDataFiltered] = useState("");
 
   useEffect(() => {
     if (savedCountriesAsString === undefined) {
@@ -25,8 +27,19 @@ export const CountriesContextProvider = (props) => {
     localStorage.setItem("countries_data", JSON.stringify(countriesData));
   }, [countriesData]);
 
+  function updateCountriesData(data) {
+    setCountries(data);
+  }
+
   return (
-    <CountriesContext.Provider value={countriesData}>
+    <CountriesContext.Provider
+      value={{
+        countriesData,
+        updateCountriesData,
+        countriesDataFiltered,
+        setCountriesDataFiltered,
+      }}
+    >
       {props.children}
     </CountriesContext.Provider>
   );
