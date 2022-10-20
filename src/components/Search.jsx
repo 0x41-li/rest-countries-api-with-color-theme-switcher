@@ -6,7 +6,7 @@ import searchIcon from "../assets/icons/search.svg";
 import CountriesContext from "../contexts/CountriesContext";
 
 const Search = () => {
-  const { setCountriesDataFiltered, countriesData } =
+  const { setSearchFilter, countriesData, countriesDataFiltered } =
     useContext(CountriesContext);
   const [searchValue, setSearchValue] = useState("");
 
@@ -14,22 +14,13 @@ const Search = () => {
     backgroundImage: `url(${searchIcon})`,
   };
 
+  const countriesDataToWorkWith =
+    countriesDataFiltered === "" ? countriesData : countriesDataFiltered;
+
   const handleInputChange = (e) => {
     const value = e.target.value;
     setSearchValue(value);
-    if (value !== "") {
-      setCountriesDataFiltered(() => {
-        return countriesData.filter((country) => {
-          if (
-            country.name.common.toLowerCase().startsWith(value.toLowerCase())
-          ) {
-            return true;
-          }
-        });
-      });
-    } else {
-      setCountriesDataFiltered("");
-    }
+    setSearchFilter(value);
   };
 
   return (

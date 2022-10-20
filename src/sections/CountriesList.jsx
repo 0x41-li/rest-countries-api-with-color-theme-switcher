@@ -6,19 +6,20 @@ import Loader from "../components/Loader";
 import CountriesContext from "../contexts/CountriesContext";
 
 const CountriesList = () => {
-  const { countriesData, countriesDataFiltered } = useContext(CountriesContext);
+  const { countriesData, countriesDataFiltered, searchFilter, regionFilter } =
+    useContext(CountriesContext);
 
   if (Object.keys(countriesData).length === 0) {
     return <Loader />;
   }
 
   const countriesDataChosen =
-    countriesDataFiltered === "" ? countriesData : countriesDataFiltered;
+    countriesDataFiltered.length === 0 ? countriesData : countriesDataFiltered;
 
   const countriesBoxesList = countriesDataChosen.map((country, i) => {
-    if (i < 8 && countriesDataFiltered === "") {
+    if (i < 8 && countriesDataFiltered.length === 0) {
       return <CountryBox countryInfo={country} key={country.name.common} />;
-    } else if (countriesDataFiltered !== "") {
+    } else if (countriesDataFiltered.length !== 0) {
       return <CountryBox countryInfo={country} key={country.name.common} />;
     }
   });
