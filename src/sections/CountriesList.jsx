@@ -1,13 +1,14 @@
 import React, { useContext } from "react";
+
+// components
 import CountryBox from "../components/CountryBox";
 import Loader from "../components/Loader";
 
-//  context
+//  contexts
 import CountriesContext from "../contexts/CountriesContext";
 
 const CountriesList = () => {
-  const { countriesData, countriesDataFiltered, searchFilter, regionFilter } =
-    useContext(CountriesContext);
+  const { countriesData, countriesDataFiltered } = useContext(CountriesContext);
 
   if (Object.keys(countriesData).length === 0) {
     return <Loader />;

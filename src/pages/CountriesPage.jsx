@@ -4,10 +4,10 @@ import React, { useContext } from "react";
 import ThemeContext from "../contexts/ThemeContext";
 
 // sections
-import FilterAndSearch from "./FilterAndSearch";
-import CountriesList from "./CountriesList";
+import FilterAndSearch from "../sections/FilterAndSearch";
+import CountriesList from "../sections/CountriesList";
 
-const Body = () => {
+const CountriesPage = () => {
   const { isDarkTheme } = useContext(ThemeContext);
 
   return (
@@ -20,4 +20,4 @@ const Body = () => {
   );
 };
 
-export default Body;
+export default CountriesPage;

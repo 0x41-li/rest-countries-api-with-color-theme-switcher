@@ -1,0 +1,107 @@
+.one-country-section {
+  padding-top: 40px;
+  padding-left: 28px;
+  padding-right: 27px;
+  padding-bottom: 60px;
+  background-color: var(--body-background);
+  min-height: 100vh;
+}
+
+.ocs__back-btn {
+  background-color: var(--header-background);
+  border: none;
+
+  display: flex;
+  gap: 8px;
+
+  padding: 6px 23px 6px 24px;
+
+  border-radius: 2px;
+  box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.293139);
+
+  cursor: pointer;
+}
+
+.ocs__back-btn__icon-svg path {
+  fill: var(--primary-text-color);
+}
+
+.ocs__back-btn__text {
+  color: var(--primary-text-color);
+  font-weight: 300;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.ocs__country__flag {
+  margin-top: 64px;
+  height: 229px;
+  max-width: 320px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.ocs__country-info__name {
+  font-weight: 800;
+  font-size: 1.375rem;
+  line-height: 1.875rem;
+
+  margin-top: 44px;
+  margin-bottom: 0;
+
+  color: var(--primary-text-color);
+}
+
+.ocs__country-info__wrapper {
+  margin-top: 16px;
+}
+
+.ocs__country-info__wrapper__ul:nth-child(2) {
+  margin-top: 32px;
+}
+
+.ocs__country-info__wrapper__info-name {
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 2rem;
+  color: var(--primary-text-color);
+}
+
+.ocs__country-info__wrapper__info-value {
+  font-weight: 300;
+  font-size: 0.875rem;
+  line-height: 2rem;
+  color: var(--primary-text-color);
+}
+
+.ocs__border-countries {
+  margin-top: 34px;
+}
+
+.ocs__border-countries__h2 {
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: var(--primary-text-color);
+}
+
+.ocs__border-countries__list {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+
+  margin-top: 16px;
+}
+
+.ocs__border-countries__country-btn {
+  padding: 6px 30px;
+  background-color: var(--header-background);
+  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.104931);
+  border-radius: 2px;
+  border: none;
+  color: var(--primary-text-color);
+  font-weight: 300;
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
