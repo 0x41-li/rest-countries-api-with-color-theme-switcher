@@ -45,19 +45,17 @@ export const CountriesContextProvider = (props) => {
           }
         })
       );
-    } else if (searchFilter === "" && regionFilter === "") {
-      setCountriesDataFiltered("");
     }
 
     localStorage.setItem("countries_data", JSON.stringify(countriesData));
   }, [countriesData, searchFilter, regionFilter]);
+
 
   return (
     <CountriesContext.Provider
       value={{
         countriesData,
         countriesDataFiltered,
-        setCountriesDataFiltered,
         setSearchFilter,
         setRegionFilter,
         searchFilter,
