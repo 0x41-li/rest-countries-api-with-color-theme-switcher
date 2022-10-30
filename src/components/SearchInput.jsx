@@ -5,17 +5,13 @@ import searchIcon from "../assets/icons/search.svg";
 // contexts
 import CountriesContext from "../contexts/CountriesContext";
 
-const Search = () => {
-  const { setSearchFilter, countriesData, countriesDataFiltered } =
-    useContext(CountriesContext);
+const SearchInput = () => {
+  const { setSearchFilter } = useContext(CountriesContext);
   const [searchValue, setSearchValue] = useState("");
 
   const inputStyles = {
     backgroundImage: `url(${searchIcon})`,
   };
-
-  const countriesDataToWorkWith =
-    countriesDataFiltered === "" ? countriesData : countriesDataFiltered;
 
   const handleInputChange = (e) => {
     const value = e.target.value;
@@ -37,4 +33,4 @@ const Search = () => {
   );
 };
 
-export default Search;
+export default SearchInput;

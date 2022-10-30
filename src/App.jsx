@@ -1,11 +1,11 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import WebFont from "webfontloader";
 
 // sass
 import "./sass/main.scss";
 
 // context
-import PageContext, { PageContextProvider } from "./contexts/PageContext";
+import { PageContextProvider } from "./contexts/PageContext";
 import { ThemeContextProvider } from "./contexts/ThemeContext";
 import { CountriesContextProvider } from "./contexts/CountriesContext";
 
@@ -16,8 +16,6 @@ import Header from "./sections/Header";
 import PageChooser from "./components/PageChooser";
 
 const App = () => {
-
-
   useEffect(() => {
     WebFont.load({
       google: {

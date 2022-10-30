@@ -8,10 +8,19 @@ import Loader from "../components/Loader";
 import CountriesContext from "../contexts/CountriesContext";
 
 const CountriesList = () => {
-  const { countriesData, countriesDataFiltered } = useContext(CountriesContext);
+  const { countriesData, countriesDataFiltered, searchFilter } =
+    useContext(CountriesContext);
 
   if (Object.keys(countriesData).length === 0) {
     return <Loader />;
+  }
+
+  if (countriesDataFiltered.length === 0 && searchFilter.length !== 0) {
+    return (
+      <div className="no-result-container">
+        <p className="nrc__para">Sorry, no result found</p>
+      </div>
+    );
   }
 
   const countriesDataChosen =

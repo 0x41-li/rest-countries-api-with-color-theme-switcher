@@ -28,7 +28,7 @@ export const CountriesContextProvider = (props) => {
 
     if (regionFilter !== "" || searchFilter !== "") {
       setCountriesDataFiltered(
-        countriesData.filter((country, i) => {
+        countriesData.filter((country) => {
           if (regionFilter !== "" && searchFilter !== "") {
             return (
               country.name.common
@@ -45,11 +45,19 @@ export const CountriesContextProvider = (props) => {
           }
         })
       );
+    } else {
+      setCountriesDataFiltered([]);
     }
 
     localStorage.setItem("countries_data", JSON.stringify(countriesData));
-  }, [countriesData, searchFilter, regionFilter]);
+  }, [
+    countriesData,
+    searchFilter,
+    regionFilter,
+    savedCountriesDataInLocalStorage,
+  ]);
 
+  console.log("1");
 
   return (
     <CountriesContext.Provider
