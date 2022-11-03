@@ -40,13 +40,16 @@ export const CountriesContextProvider = (props) => {
             return country.name.common
               .toLowerCase()
               .startsWith(searchFilter.toLowerCase());
-          } else if (regionFilter !== "") {
+          } else {
             return country.region.toLowerCase() === regionFilter.toLowerCase();
           }
+           
         })
       );
     } else {
-      setCountriesDataFiltered([]);
+      if (countriesDataFiltered.length !== 0) {
+        setCountriesDataFiltered([]);
+      }
     }
 
     localStorage.setItem("countries_data", JSON.stringify(countriesData));
@@ -55,9 +58,8 @@ export const CountriesContextProvider = (props) => {
     searchFilter,
     regionFilter,
     savedCountriesDataInLocalStorage,
+    countriesDataFiltered.length
   ]);
-
-  console.log("1");
 
   return (
     <CountriesContext.Provider
