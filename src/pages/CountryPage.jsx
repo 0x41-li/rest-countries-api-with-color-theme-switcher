@@ -44,27 +44,20 @@ const CountryPage = (props) => {
       )[0].name.common;
     });
 
-  // functions
-  function countryPageRedirect(countryName) {
-    setPageInfo({ page: countryName });
-  }
-
   return (
     <section className="one-country-section" data-dark-theme={isDarkTheme}>
       {/* ocs = one-country-section */}
       <div className="ocs__back">
         <button
           className="ocs__back-btn"
-          onClick={() => countryPageRedirect("home")}
+          onClick={() => setPageInfo({ page: "home" })}
         >
           <ArrowLeft className="ocs__back-btn__icon-svg" />
           <span className="ocs__back-btn__text">Back</span>
         </button>
       </div>
       <div className="ocs__country">
-        <div
-          className="ocs__country__flag"
-        >
+        <div className="ocs__country__flag">
           <img src={countryInfo.flags?.svg} alt={countryName + " Flag"} />
         </div>
         <div className="ocs__country-info">
@@ -157,7 +150,15 @@ const CountryPage = (props) => {
                 {countryBorderCountriesNames.map((borderCountryName) => {
                   return (
                     <li key={borderCountryName}>
-                      <button className="ocs__border-countries__country-btn">
+                      <button
+                        className="ocs__border-countries__country-btn"
+                        onClick={() =>
+                          setPageInfo({
+                            page: "country",
+                            countryName: borderCountryName,
+                          })
+                        }
+                      >
                         {borderCountryName}
                       </button>
                     </li>
