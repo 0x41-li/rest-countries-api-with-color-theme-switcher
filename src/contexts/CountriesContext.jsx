@@ -43,7 +43,6 @@ export const CountriesContextProvider = (props) => {
           } else {
             return country.region.toLowerCase() === regionFilter.toLowerCase();
           }
-           
         })
       );
     } else {
@@ -58,7 +57,7 @@ export const CountriesContextProvider = (props) => {
     searchFilter,
     regionFilter,
     savedCountriesDataInLocalStorage,
-    countriesDataFiltered.length
+    countriesDataFiltered.length,
   ]);
 
   return (
