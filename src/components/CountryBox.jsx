@@ -7,15 +7,11 @@ const CountryBox = (props) => {
   const { setPageInfo } = useContext(PageContext);
 
   const countryInfo = props.countryInfo;
-  const countryFlag = countryInfo.flags.png;
+  const countryFlag = countryInfo.flags.svg;
   const countryName = countryInfo.name;
   const countryPopulation = countryInfo.population;
   const countryRegion = countryInfo.region;
   const countryCapital = countryInfo.capital;
-
-  const styles = {
-    backgroundImage: `url(${countryFlag})`,
-  };
 
   function handleClick() {
     setPageInfo({ page: "country", countryName: countryName.common });
@@ -23,7 +19,9 @@ const CountryBox = (props) => {
 
   return (
     <div className="country-box" role="button" onClick={handleClick}>
-      <div className="country-box__flag" style={styles}></div>
+      <div className="country-box__flag">
+        <img src={countryFlag} alt={countryName + " Flag"} />
+      </div>
       <div className="country-box__info">
         <h2 className="country-box__h2">{countryName.common}</h2>
         <ul className="country-box__more-info">

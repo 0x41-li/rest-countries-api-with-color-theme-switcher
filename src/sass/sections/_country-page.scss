@@ -35,11 +35,7 @@
 
 .ocs__country__flag {
   margin-top: 64px;
-  height: 229px;
-  max-width: 320px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+
 }
 
 .ocs__country-info__name {
@@ -115,4 +111,9 @@
   font-size: 0.875rem;
   font-weight: 300;
   line-height: 1.125rem;
+}
+
+
+@media screen and (min-width: 768px) {
+
 }

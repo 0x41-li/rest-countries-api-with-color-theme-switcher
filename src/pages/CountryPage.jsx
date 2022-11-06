@@ -64,8 +64,9 @@ const CountryPage = (props) => {
       <div className="ocs__country">
         <div
           className="ocs__country__flag"
-          style={{ backgroundImage: `url(${countryInfo.flags?.png})` }}
-        ></div>
+        >
+          <img src={countryInfo.flags?.svg} alt={countryName + " Flag"} />
+        </div>
         <div className="ocs__country-info">
           <h1 className="ocs__country-info__name">{countryName}</h1>
           <div className="ocs__country-info__wrapper">
@@ -156,7 +157,9 @@ const CountryPage = (props) => {
                 {countryBorderCountriesNames.map((borderCountryName) => {
                   return (
                     <li key={borderCountryName}>
-                      <button className="ocs__border-countries__country-btn">{borderCountryName}</button>
+                      <button className="ocs__border-countries__country-btn">
+                        {borderCountryName}
+                      </button>
                     </li>
                   );
                 })}

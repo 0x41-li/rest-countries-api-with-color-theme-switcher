@@ -30,10 +30,8 @@
 
 .countries-list .country-box__flag {
   height: 160px;
-
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  object-fit: contain;
+  overflow: hidden;
 }
 
 .countries-list .country-box__info {
