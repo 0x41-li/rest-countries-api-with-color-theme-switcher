@@ -14,16 +14,10 @@ const PageChooser = () => {
 
   switch (pageInfo.page) {
     case "home":
-      pageComp = <CountriesPage />;
-      break;
+      return <CountriesPage />;
     case "country":
-      pageComp = <CountryPage countryName={pageInfo.countryName} />;
-      break;
-
-    default:
-      break;
+      return <CountryPage countryName={pageInfo.countryName} />;
   }
-  return pageComp;
 };
 
 export default PageChooser;
