@@ -8,30 +8,24 @@ import Loader from "../components/Loader";
 import CountriesContext from "../contexts/CountriesContext";
 
 const CountriesList = () => {
-  const { countriesData, countriesDataFiltered, searchFilter } =
-    useContext(CountriesContext);
+  const { countriesDataFiltered } = useContext(CountriesContext);
 
-  if (Object.keys(countriesData).length === 0) {
-    return <Loader />;
+  if (countriesDataFiltered.length === 0) {
+    if (Object.keys(countriesDataFiltered).length === 0) {
+      return <Loader />;
+    }
   }
 
-  if (countriesDataFiltered.length === 0 && searchFilter.length !== 0) {
+  if (typeof countriesDataFiltered === "string") {
     return (
       <div className="no-result-container">
-        <p className="nrc__para">Sorry, no result found</p>
+        <p className="nrc__para">{countriesDataFiltered}</p>
       </div>
     );
   }
 
-  const countriesDataChosen =
-    countriesDataFiltered.length === 0 ? countriesData : countriesDataFiltered;
-
-  const countriesBoxesList = countriesDataChosen.map((country, i) => {
-    if (i < 8 && countriesDataFiltered.length === 0) {
-      return <CountryBox countryInfo={country} key={country.name.common} />;
-    } else if (countriesDataFiltered.length !== 0) {
-      return <CountryBox countryInfo={country} key={country.name.common} />;
-    }
+  const countriesBoxesList = countriesDataFiltered.map((country, i) => {
+    return <CountryBox countryInfo={country} key={country.name.common} />;
   });
 
   return <div className="countries-list">{countriesBoxesList}</div>;

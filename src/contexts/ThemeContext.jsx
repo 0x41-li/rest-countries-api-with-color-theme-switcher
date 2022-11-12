@@ -1,5 +1,8 @@
 import { createContext, useEffect, useState } from "react";
 
+// helpers
+import { toBool } from "../helpers/general";
+
 export const ThemeContext = createContext({});
 
 export const ThemeContextProvider = (props) => {
@@ -22,5 +25,3 @@ export const ThemeContextProvider = (props) => {
 };
 
 export default ThemeContext;
-
-const toBool = (string) => (string === "true" ? true : false);

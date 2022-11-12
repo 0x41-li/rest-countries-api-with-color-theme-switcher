@@ -2,73 +2,69 @@ import { createContext, useEffect, useState } from "react";
 
 export const CountriesContext = createContext({});
 
+/* TODO: Add a cookie that will expires every 24 hour
+when the cookie expires make, request all countries data again
+and save it in the local storage
+*/
+
 export const CountriesContextProvider = (props) => {
-  const savedCountriesDataInLocalStorage =
-    localStorage.getItem("countries_data") ?? undefined;
-
-  const savedCountriesDataAsJson = savedCountriesDataInLocalStorage
-    ? JSON.parse(savedCountriesDataInLocalStorage)
-    : {};
-
-  const [countriesData, setCountries] = useState(savedCountriesDataAsJson);
-  const [countriesDataFiltered, setCountriesDataFiltered] = useState([]);
+  const [countriesData, setCountriesData] = useState(
+    JSON.parse(localStorage.getItem("countries_data")) ?? []
+  );
   const [searchFilter, setSearchFilter] = useState("");
   const [regionFilter, setRegionFilter] = useState("");
 
+  const [countriesDataFiltered, setCountriesDataFiltered] =
+    useState(countriesData);
+
   useEffect(() => {
-    if (savedCountriesDataInLocalStorage === undefined) {
+    // fetch if there's no countries data in local storage
+    if (Object.keys(countriesData).length === 0) {
       const fetchCountries = async () => {
         const resp = await fetch("https://restcountries.com/v3.1/all");
         const respJson = await resp.json();
-        setCountries(respJson);
+
+        setCountriesData(respJson);
+
+        localStorage.setItem("countries_data", JSON.stringify(respJson));
       };
 
       fetchCountries();
     }
 
+    // search and region filters
     if (regionFilter !== "" || searchFilter !== "") {
-      setCountriesDataFiltered(
-        countriesData.filter((country) => {
-          if (regionFilter !== "" && searchFilter !== "") {
-            return (
-              country.name.common
-                .toLowerCase()
-                .startsWith(searchFilter.toLowerCase()) &&
-              country.region.toLowerCase() === regionFilter.toLowerCase()
-            );
-          } else if (searchFilter !== "") {
-            return country.name.common
+      const filterData = countriesData.filter((country) => {
+        if (regionFilter !== "" && searchFilter !== "") {
+          return (
+            country.name.common
               .toLowerCase()
-              .startsWith(searchFilter.toLowerCase());
-          } else {
-            return country.region.toLowerCase() === regionFilter.toLowerCase();
-          }
-        })
+              .startsWith(searchFilter.toLowerCase()) &&
+            country.region.toLowerCase() === regionFilter.toLowerCase()
+          );
+        } else if (searchFilter !== "") {
+          return country.name.common
+            .toLowerCase()
+            .startsWith(searchFilter.toLowerCase());
+        } else {
+          return country.region.toLowerCase() === regionFilter.toLowerCase();
+        }
+      });
+      setCountriesDataFiltered(
+        filterData.length === 0 ? "Sorry, no results was found" : filterData
       );
     } else {
-      if (countriesDataFiltered.length !== 0) {
-        setCountriesDataFiltered([]);
-      }
+      setCountriesDataFiltered(countriesData.slice(0, 8));
     }
-
-    localStorage.setItem("countries_data", JSON.stringify(countriesData));
-  }, [
-    countriesData,
-    searchFilter,
-    regionFilter,
-    savedCountriesDataInLocalStorage,
-    countriesDataFiltered.length,
-  ]);
+  }, [countriesData, searchFilter, regionFilter]);
 
   return (
     <CountriesContext.Provider
       value={{
-        countriesData,
-        countriesDataFiltered,
         setSearchFilter,
         setRegionFilter,
-        searchFilter,
-        regionFilter,
+        countriesDataFiltered,
+        countriesData,
       }}
     >
       {props.children}

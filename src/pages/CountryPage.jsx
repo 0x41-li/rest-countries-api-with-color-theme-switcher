@@ -8,6 +8,9 @@ import ThemeContext from "../contexts/ThemeContext";
 import PageContext from "../contexts/PageContext";
 import CountriesContext from "../contexts/CountriesContext";
 
+// helpers
+import { numberWithCommas } from "../helpers/general";
+
 const CountryPage = (props) => {
   // destructing props
   const countryName = props.countryName;
@@ -41,7 +44,7 @@ const CountryPage = (props) => {
           country.cca2 === countryCiocCode ||
           country.cca3 === countryCiocCode ||
           country.cioc === countryCiocCode
-      )[0].name.common;
+      )[0]?.name?.common;
     });
 
   return (
@@ -175,9 +178,5 @@ const CountryPage = (props) => {
     </section>
   );
 };
-
-function numberWithCommas(x) {
-  return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-}
 
 export default CountryPage;
