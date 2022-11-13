@@ -22,7 +22,9 @@ export const CountriesContextProvider = (props) => {
   useEffect(() => {
     // fetch if there's no countries data in local storage
     // or if the cacheCountriesDataTime cookie has expired
-    const cacheCountriesDataCookieExistenceBool = getCookie("cacheCountriesDataTime")
+    const cacheCountriesDataCookieExistenceBool = getCookie(
+      "cacheCountriesDataTime"
+    )
       ? true
       : false;
 
@@ -35,7 +37,7 @@ export const CountriesContextProvider = (props) => {
 
         localStorage.setItem("countries_data", JSON.stringify(respJson));
 
-        setCookie("cacheCountriesDataTime", "week", { "max-age": 24*3600 });
+        setCookie("cacheCountriesDataTime", "week", { "max-age": 24 * 3600 });
       };
 
       fetchCountries();
@@ -60,7 +62,9 @@ export const CountriesContextProvider = (props) => {
         }
       });
       setCountriesDataFiltered(
-        filterData.length === 0 ? "Sorry, no results was found" : filterData
+        filterData.length === 0
+          ? "Sorry, no results was found"
+          : filterData.slice(0, 8)
       );
     } else {
       setCountriesDataFiltered(countriesData.slice(0, 8));
