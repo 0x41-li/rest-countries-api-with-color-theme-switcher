@@ -1,5 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 
+import { getCookie, setCookie } from "../helpers/cookies";
+
 export const CountriesContext = createContext({});
 
 /* TODO: Add a cookie that will expires every 24 hour
@@ -19,7 +21,12 @@ export const CountriesContextProvider = (props) => {
 
   useEffect(() => {
     // fetch if there's no countries data in local storage
-    if (Object.keys(countriesData).length === 0) {
+    // or if the cacheCountriesDataTime cookie has expired
+    const cacheCountriesDataCookieExistenceBool = getCookie("cacheCountriesDataTime")
+      ? true
+      : false;
+
+    if (countriesData.length === 0 || !cacheCountriesDataCookieExistenceBool) {
       const fetchCountries = async () => {
         const resp = await fetch("https://restcountries.com/v3.1/all");
         const respJson = await resp.json();
@@ -27,6 +34,8 @@ export const CountriesContextProvider = (props) => {
         setCountriesData(respJson);
 
         localStorage.setItem("countries_data", JSON.stringify(respJson));
+
+        setCookie("cacheCountriesDataTime", "week", { "max-age": 24*3600 });
       };
 
       fetchCountries();
