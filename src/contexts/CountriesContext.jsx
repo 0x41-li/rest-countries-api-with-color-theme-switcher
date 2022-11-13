@@ -4,11 +4,6 @@ import { getCookie, setCookie } from "../helpers/cookies";
 
 export const CountriesContext = createContext({});
 
-/* TODO: Add a cookie that will expires every 24 hour
-when the cookie expires make, request all countries data again
-and save it in the local storage
-*/
-
 export const CountriesContextProvider = (props) => {
   const [countriesData, setCountriesData] = useState(
     JSON.parse(localStorage.getItem("countries_data")) ?? []
@@ -19,15 +14,17 @@ export const CountriesContextProvider = (props) => {
   const [countriesDataFiltered, setCountriesDataFiltered] =
     useState(countriesData);
 
+  const [showNumber, setShowNumber] = useState(8);
+
   useEffect(() => {
-    // fetch if there's no countries data in local storage
-    // or if the cacheCountriesDataTime cookie has expired
     const cacheCountriesDataCookieExistenceBool = getCookie(
       "cacheCountriesDataTime"
     )
       ? true
       : false;
 
+    // fetch if there's no countries data in local storage
+    // or if the cacheCountriesDataTime cookie has expired
     if (countriesData.length === 0 || !cacheCountriesDataCookieExistenceBool) {
       const fetchCountries = async () => {
         const resp = await fetch("https://restcountries.com/v3.1/all");
@@ -64,12 +61,15 @@ export const CountriesContextProvider = (props) => {
       setCountriesDataFiltered(
         filterData.length === 0
           ? "Sorry, no results was found"
-          : filterData.slice(0, 8)
+          : filterData.slice(0, showNumber)
       );
     } else {
-      setCountriesDataFiltered(countriesData.slice(0, 8));
+      setCountriesDataFiltered(countriesData.slice(0, showNumber));
     }
-  }, [countriesData, searchFilter, regionFilter]);
+  }, [countriesData, searchFilter, regionFilter, showNumber]);
+
+  const loadMore = () => setShowNumber((prev) => prev + 8);
+  const resetNumberShow = () => setShowNumber(8);
 
   return (
     <CountriesContext.Provider
@@ -78,6 +78,8 @@ export const CountriesContextProvider = (props) => {
         setRegionFilter,
         countriesDataFiltered,
         countriesData,
+        loadMore,
+        resetNumberShow,
       }}
     >
       {props.children}

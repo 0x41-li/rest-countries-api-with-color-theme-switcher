@@ -6,7 +6,7 @@ import searchIcon from "../assets/icons/search.svg";
 import CountriesContext from "../contexts/CountriesContext";
 
 const SearchInput = () => {
-  const { setSearchFilter } = useContext(CountriesContext);
+  const { setSearchFilter, resetNumberShow } = useContext(CountriesContext);
   const [searchValue, setSearchValue] = useState("");
 
   const inputStyles = {
@@ -17,6 +17,7 @@ const SearchInput = () => {
     const value = e.target.value;
     setSearchValue(value);
     setSearchFilter(value);
+    resetNumberShow(8);
   };
 
   return (

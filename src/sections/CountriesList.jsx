@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 // components
 import CountryBox from "../components/CountryBox";
 import Loader from "../components/Loader";
+import LoadMoreButton from "../components/LoadMoreButton";
 
 //  contexts
 import CountriesContext from "../contexts/CountriesContext";
@@ -28,7 +29,12 @@ const CountriesList = () => {
     return <CountryBox countryInfo={country} key={country.name.common} />;
   });
 
-  return <div className="countries-list">{countriesBoxesList}</div>;
+  return (
+    <>
+      <div className="countries-list">{countriesBoxesList}</div>
+      <LoadMoreButton />
+    </>
+  );
 };
 
 export default CountriesList;
