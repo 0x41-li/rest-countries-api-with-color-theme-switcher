@@ -1,6 +1,6 @@
 {
   "name": "rest_countries_api_with_color_theme_switcher",
-  "homepage": "rest_countries_api_with_color_theme_switcher",
+  "homepage": "rest-countries-api-with-color-theme-switcher",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
