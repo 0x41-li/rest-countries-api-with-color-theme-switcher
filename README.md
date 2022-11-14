@@ -34,7 +34,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [https://github.com/0x41-li/rest-countries-api-with-color-theme-switcher](https://github.com/0x41-li/rest-countries-api-with-color-theme-switcher)
-- Live Site URL: [Add live site URL here](https://github.com/0x41-li/rest-countries-api-with-color-theme-switcher)
+- Live Site URL: [https://0x41-li.github.io/rest-countries-api-with-color-theme-switcher/](https://0x41-li.github.io/rest-countries-api-with-color-theme-switcher/)
 
 ## My process
 
