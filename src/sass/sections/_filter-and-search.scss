@@ -74,7 +74,7 @@
 }
 
 // select input
-.filter-and-search .countries-select-input {
+.filter-and-search .region-select-input {
   position: relative;
   margin-top: 40px;
   display: block;
@@ -84,7 +84,7 @@
   }
 }
 
-.filter-and-search .countries-select-input__value-box {
+.filter-and-search .region-select-input__value-box {
   display: block;
   width: 100%;
   height: 48px;
@@ -105,7 +105,7 @@
   }
 }
 
-.filter-and-search .countries-select-input__value {
+.filter-and-search .region-select-input__value {
   font-weight: 400;
   font-size: 0.75rem;
   line-height: 1.25rem;
@@ -117,7 +117,7 @@
   }
 }
 
-.countries-select-input__icon {
+.region-select-input__icon {
   position: absolute;
   top: 22px;
   right: 20px;
@@ -134,12 +134,11 @@
   transition-duration: 0.2s;
 }
 
-.filter-and-search
-  .countries-select-input.opened .countries-select-input__icon {
-    transform: rotateZ(180deg);
-  }
+.filter-and-search .region-select-input.opened .region-select-input__icon {
+  transform: rotateZ(180deg);
+}
 
-.countries-select-input__icon path {
+.region-select-input__icon path {
   color: black;
 
   [data-dark-theme="true"] & {
@@ -147,7 +146,7 @@
   }
 }
 
-.filter-and-search .countries-select-input__list {
+.filter-and-search .region-select-input__list {
   position: absolute;
   top: 100%;
 
@@ -167,16 +166,14 @@
   transition-duration: 0.2s;
 }
 
-.filter-and-search
-  .countries-select-input.opened
-  .countries-select-input__list {
+.filter-and-search .region-select-input.opened .region-select-input__list {
   transform: translateY(0%);
   visibility: visible;
   pointer-events: all;
   opacity: 1;
 }
 
-.filter-and-search .countries-select-input__list__option {
+.filter-and-search .region-select-input__list__option {
   display: block;
   color: var(--primary-text-color);
   font-weight: 400;

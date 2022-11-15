@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 // icons
-import { ReactComponent as ExpandMoreArrow } from "../assets/icons/expand-more-arrow.svg";
+import { ReactComponent as ExpandArrow } from "../assets/icons/expand-more-arrow.svg";
 
 // contexts
 import CountriesContext from "../contexts/CountriesContext";
@@ -21,7 +21,7 @@ const SelectInput = () => {
   }, []);
 
   function handleDocumentClick(e) {
-    if (e.target.closest(".countries-select-input")) {
+    if (e.target.closest(".region-select-input")) {
       setAreOptionsDisplayed((prevState) => !prevState);
     } else {
       setAreOptionsDisplayed(false);
@@ -29,7 +29,7 @@ const SelectInput = () => {
   }
 
   function selectNewValue(e) {
-    if (e.target != e.currentTarget) {
+    if (e.target !== e.currentTarget) {
       setValueSelect(e.target.textContent);
       setRegionFilter(e.target.textContent);
     }
@@ -37,27 +37,35 @@ const SelectInput = () => {
 
   return (
     <div
-      className={
-        "countries-select-input" + " " + (areOptionsDisplayed && "opened")
-      }
+      className={"region-select-input " + (areOptionsDisplayed && "opened")}
       role="listbox"
+      aria-label="Select A Region"
+      tabIndex={0}
     >
-      <div className="countries-select-input__value-box" tabIndex="0">
-        <span className="countries-select-input__value">
+      <div className="region-select-input__value-box" tabIndex="0">
+        <span className="region-select-input__value">
           {valueSelected ? valueSelected : "Filter by Region"}
         </span>
-        <ExpandMoreArrow className="countries-select-input__icon" />
+        <ExpandArrow className="region-select-input__icon" />
       </div>
 
       <div
-        className="countries-select-input__list"
+        className="region-select-input__list"
         onClick={(e) => selectNewValue(e)}
+        role="list"
       >
-        <span className="countries-select-input__list__option">Africa</span>
-        <span className="countries-select-input__list__option">Americas</span>
-        <span className="countries-select-input__list__option">Asia</span>
-        <span className="countries-select-input__list__option">Europe</span>
-        <span className="countries-select-input__list__option">Oceania</span>
+        {["Africa", "Americas", "Asia", "Europe", "Oceania"].map(
+          (region, i) => (
+            <span
+              key={i}
+              aria-selected={valueSelected === region}
+              className="region-select-input__list__option"
+              role="option"
+            >
+              {region}
+            </span>
+          )
+        )}
       </div>
     </div>
   );

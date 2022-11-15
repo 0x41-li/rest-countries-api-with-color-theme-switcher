@@ -10,13 +10,13 @@ import CountryPage from "../pages/CountryPage";
 const PageChooser = () => {
   const { pageInfo } = useContext(PageContext);
 
-  let pageComp;
-
   switch (pageInfo.page) {
     case "home":
       return <CountriesPage />;
     case "country":
       return <CountryPage countryName={pageInfo.countryName} />;
+    default:
+      break;
   }
 };
 

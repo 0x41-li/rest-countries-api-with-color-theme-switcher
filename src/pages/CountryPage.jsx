@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 
 // icons
 import { ReactComponent as ArrowLeft } from "../assets/icons/arrow-left.svg";
