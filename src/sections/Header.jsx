@@ -12,10 +12,10 @@ const Header = () => {
       <div className="container">
         <h1>Where in the world?</h1>
         <button className="header__toggle-theme-btn" onClick={toggleTheme}>
-          <div className="header__toggle-theme-btn__moon-icon">
+          <span className="header__toggle-theme-btn__moon-icon">
             <MoonIcon />
-          </div>
-          <p className="header__toggle-theme-btn__para">Dark Mode</p>
+          </span>
+          <span className="header__toggle-theme-btn__para">Dark Mode</span>
         </button>
       </div>
     </header>
