@@ -52,7 +52,6 @@ const SelectInput = () => {
       <div
         className="region-select-input__list"
         onClick={(e) => selectNewValue(e)}
-        role="list"
       >
         {["Africa", "Americas", "Asia", "Europe", "Oceania"].map(
           (region, i) => (
